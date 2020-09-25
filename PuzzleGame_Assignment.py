@@ -210,7 +210,7 @@ def checkPuzzle():
 
 def record(completeTime):
     global rank, dir
-    msg = "성공 : " + str(completeTime) + "\n"
+    msg = "성공 : " + str(completeTime) + "초\n"
 
     if completeTime < rank[2]:
         rank[2] = completeTime
@@ -226,7 +226,7 @@ def record(completeTime):
 
     for i in range(3):
         if float(rank[i]) != float(sys.maxsize):
-            msg += str(i + 1) + "등 : " + str(rank[i]) + "\n"
+            msg += str(i + 1) + "등 : " + str(rank[i]) + "초\n"
     showMessage(msg)
 
 
