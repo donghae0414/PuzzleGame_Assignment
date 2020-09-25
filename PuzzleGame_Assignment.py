@@ -145,11 +145,31 @@ def swapImage(row, col):
     print('white row : ', whiteRow, ', col : ', whiteCol)
 
 def createPuzzle():
-    arr = [[(0, 0), (0, 1), (0, 2)], 
+    original = [
+        [(0, 0), (0, 1), (0, 2)], 
         [(1, 0), (1, 1), (1, 2)],
         [(2, 0), (2, 1), (2, 2)]]
-    random.shuffle(arr)
-    print('random 결과 : ', arr)
+
+    arr = [
+        [(0, 0), (0, 1), (0, 2)], 
+        [(1, 0), (1, 1), (1, 2)],
+        [(2, 0), (2, 1), (2, 2)]]
+
+    isShaked = False
+    while not isShaked:
+        random.shuffle(arr)
+        print('random 결과 : ', arr)
+
+        for i in range(len(arr)):
+            for j in range(len(arr[i])):
+                for k in range(2):
+                    if arr[i][j][k] != original[i][j][k]:
+                        isShaked = True
+                        break
+                if isShaked:
+                    break
+            if isShaked:
+                break
 
     # Create puzzles
     for i in range(len(puzzles)):
@@ -209,8 +229,6 @@ def record(completeTime):
             msg += str(i + 1) + "등 : " + str(rank[i]) + "\n"
     showMessage(msg)
 
-
-    
 
 showMessage('플레이할 이미지를 골라봐')
 startGame(selectScene)
